@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR | SRE & Security Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a68;
+            --accent: #00d4aa;
+            --accent-dark: #00b894;
+            --border: #e1e5e9;
+            --code-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .terminal-prompt {
+            display: inline-block;
+            background: var(--code-bg);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .terminal-prompt::before {
+            content: '$ ';
+            color: #888;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .icon {
+            color: var(--accent);
+        }
+
+        .bio-text {
+            color: var(--text-secondary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-list li::before {
+            content: '>';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .work-item {
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .work-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .work-item:first-child {
+            padding-top: 0;
+        }
+
+        .work-item h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .work-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .ascii-art {
+            font-size: 0.6rem;
+            line-height: 1.2;
+            color: var(--accent);
+            opacity: 0.3;
+            text-align: center;
+            margin-bottom: 20px;
+            white-space: pre;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .ascii-art {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ascii-art">
+    ___   ____
+   /   | / __ \
+  / /| |/ /_/ /
+ / ___ / _, _/
+/_/  |_/_/ |_|
+        </div>
+
+        <header>
+            <div class="terminal-prompt">whoami</div>
+            <h1>AR</h1>
+            <p class="tagline">SRE | Security Professional | Infrastructure Hacker</p>
+
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" title="X / Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2><span class="icon"><i class="fa-solid fa-terminal"></i></span> About</h2>
+            <p class="bio-text">
+                I'm a Site Reliability Engineer and security enthusiast with a passion for building resilient,
+                secure infrastructure at scale. I spend my days automating everything, breaking things to make
+                them stronger, and diving deep into systems to understand how they tick. When production is on
+                fire, I'm the one with the extinguisher and a root cause analysis already in progress.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2><span class="icon"><i class="fa-solid fa-code"></i></span> What I Do</h2>
+            <div class="work-item">
+                <h3>Infrastructure & Reliability</h3>
+                <p>Designing and maintaining highly available distributed systems. Building observability
+                pipelines, incident response automation, and chaos engineering practices.</p>
+            </div>
+            <div class="work-item">
+                <h3>Security Engineering</h3>
+                <p>Hardening infrastructure, implementing zero-trust architectures, conducting security
+                assessments, and building secure CI/CD pipelines. Breaking things before the bad actors do.</p>
+            </div>
+            <div class="work-item">
+                <h3>Automation & Tooling</h3>
+                <p>Creating internal tools, automating toil away, and building platforms that let developers
+                ship faster and safer. Infrastructure as code is my love language.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><span class="icon"><i class="fa-solid fa-wrench"></i></span> Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Infrastructure</h3>
+                    <ul class="skill-list">
+                        <li>Kubernetes / Docker</li>
+                        <li>Terraform / Pulumi</li>
+                        <li>AWS / GCP / Azure</li>
+                        <li>Linux Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Security</h3>
+                    <ul class="skill-list">
+                        <li>Penetration Testing</li>
+                        <li>SIEM / SOC</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Incident Response</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>Go</li>
+                        <li>Bash / Shell</li>
+                        <li>Rust</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Observability</h3>
+                    <ul class="skill-list">
+                        <li>Prometheus / Grafana</li>
+                        <li>ELK Stack</li>
+                        <li>Datadog / New Relic</li>
+                        <li>OpenTelemetry</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="status">
+                <span class="status-dot"></span>
+                Available for interesting projects
+            </div>
+            <p style="margin-top: 15px;">
+                Built with <i class="fa-solid fa-keyboard"></i> and <i class="fa-solid fa-mug-hot"></i>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
